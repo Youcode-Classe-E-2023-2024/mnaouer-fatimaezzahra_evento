@@ -64,7 +64,7 @@
     <header class="blog-header py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-4 pt-1">
-                <a class="blog-header-logo text-dark" href="index.php?page=home">EVENTO</a>
+                <a class="blog-header-logo text-dark" href="{{ route('home') }}">EVENTO</a>
             </div>
 
             <div class="col-4 text-center">
@@ -78,9 +78,9 @@
 
             <div class="col-4 d-flex justify-content-end align-items-center">
 
-                <a class="btn btn-sm btn-dark ms-2" href="index.php?page=editor">Create Event</a>
+                <a class="btn btn-sm btn-dark ms-2" href="{{ route('event.create') }}">Create Event</a>
                 {{--                <a class="btn btn-sm btn-outline-secondary ms-2" href="index.php?page=profile">Profile</a>--}}
-                <a class="btn btn-sm btn-outline-secondary ms-2" href="index.php?page=login">Sign in</a>
+                <a class="btn btn-sm btn-outline-secondary ms-2" href="{{ route('login') }}">Sign in</a>
             </div>
 
         </div>
