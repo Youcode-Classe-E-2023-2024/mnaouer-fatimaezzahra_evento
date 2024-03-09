@@ -25,7 +25,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/login', [LoginController::class, 'create'])->name('login');
 Route::get('/register', [RegisterController::class, 'create'])->name('register');
 
-Route::get('/profile', [ProfileController::class, 'create'])->name('profile');
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::get('/profile/show/{article}', [ProfileController::class, 'show'])->name('profile.show');
 
 Route::get('/event/create', [EventController::class, 'create'])->name('event.create');
 Route::get('/event/edit/{article}', [EventController::class, 'edit'])->name('event.edit');

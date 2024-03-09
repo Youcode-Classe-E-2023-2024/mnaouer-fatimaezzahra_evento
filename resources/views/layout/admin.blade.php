@@ -64,7 +64,7 @@
 
         <!-- Nav Item -->
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{ route('profile') }}">
                 <i class="fa-solid fa-user-group"></i>
                 <span>Users</span></a>
         </li>
@@ -161,7 +161,7 @@
                                 <i class="fas fa-home fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Home
                             </a>
-                            <a class="dropdown-item" href="{{ route('profile') }}">
+                            <a class="dropdown-item" href="{{ route('profile.show', 1) }}">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Profile
                             </a>

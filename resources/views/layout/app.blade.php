@@ -79,7 +79,7 @@
             <div class="col-4 d-flex justify-content-end align-items-center">
                 <a class="btn btn-sm btn-outline-secondary ms-2" href="{{ route('dashboard') }}">Admin</a>
                 <a class="btn btn-sm btn-dark ms-2" href="{{ route('event.create') }}">Create Event</a>
-                <a class="btn btn-sm btn-outline-secondary ms-2" href="{{ route('profile') }}">Profile</a>
+                <a class="btn btn-sm btn-outline-secondary ms-2" href="{{ route('profile.show', 1) }}">Profile</a>
                 <a class="btn btn-sm btn-outline-secondary ms-2" href="{{ route('login') }}">Sign in</a>
             </div>
         </div>
