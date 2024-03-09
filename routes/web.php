@@ -19,6 +19,18 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
+Route::middleware(['role:admin'])->group(function () {
+
+});
+
+Route::middleware(['role:admin|organizer'])->group(function () {
+
+});
+
+Route::middleware(['role:admin|organizer|user'])->group(function () {
+
+});
+
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
