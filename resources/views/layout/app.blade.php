@@ -68,7 +68,7 @@
             </div>
 
             <div class="col-4 text-center">
-                <div class="d-flex justify-content-center align-items-center">
+                <div class="d-none d-md-flex d-lg-flex d-xl-flex d-xxl-flex justify-content-center align-items-center">
                     <div class="form">
                         <i class="fa fa-search"></i>
                         <input name="search" id="search-bar" type="text" class="form-control form-input" placeholder="Search...">
@@ -77,17 +77,13 @@
             </div>
 
             <div class="col-4 d-flex justify-content-end align-items-center">
-
+                <a class="btn btn-sm btn-outline-secondary ms-2" href="{{ route('dashboard') }}">Admin</a>
                 <a class="btn btn-sm btn-dark ms-2" href="{{ route('event.create') }}">Create Event</a>
-                {{--                <a class="btn btn-sm btn-outline-secondary ms-2" href="index.php?page=profile">Profile</a>--}}
+                <a class="btn btn-sm btn-outline-secondary ms-2" href="{{ route('profile') }}">Profile</a>
                 <a class="btn btn-sm btn-outline-secondary ms-2" href="{{ route('login') }}">Sign in</a>
             </div>
-
         </div>
     </header>
-    {{--    <div class=" mt-4 d-flex justify-content-end">--}}
-    {{--        <a class="btn btn-sm btn-outline-secondary ms-2" href="index.php?page=admin">Admin</a>--}}
-    {{--    </div>--}}
 
     <div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-between">
