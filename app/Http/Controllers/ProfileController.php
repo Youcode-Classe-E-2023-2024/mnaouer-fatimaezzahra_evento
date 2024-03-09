@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -11,7 +12,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('profile.index');
+        $users = User::all();
+        return view('profile.index', ['users' => $users]);
     }
 
     /**
@@ -44,6 +46,16 @@ class ProfileController extends Controller
     public function edit(string $id)
     {
         //
+    }
+
+    public function editRole(Request $request)
+    {
+        $id = $request->id;
+        $user = User::find($id);
+        $user->removeRole($user->getRoleNames()[0]);
+        $user->assignRole($request->role);
+
+        return back();
     }
 
     /**

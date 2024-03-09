@@ -31,6 +31,7 @@ Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
 
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::post('/profile/role', [ProfileController::class, 'editRole'])->name('profile.role');
 Route::get('/profile/show/{article}', [ProfileController::class, 'show'])->name('profile.show');
 
 Route::get('/event/create', [EventController::class, 'create'])->name('event.create');
