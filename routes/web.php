@@ -6,6 +6,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,6 @@ Route::get('/profile', [ProfileController::class, 'create'])->name('profile');
 Route::get('/event/create', [EventController::class, 'create'])->name('event.create');
 Route::get('/event/edit/{article}', [EventController::class, 'edit'])->name('event.edit');
 Route::get('/event/{article}', [EventController::class, 'show'])->name('event.show');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
