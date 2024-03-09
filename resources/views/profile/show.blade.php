@@ -27,9 +27,9 @@
                         <small>role</small>
                         <h5>firstname lastname</h5>
                         <p>example@gmail.com</p>
-                        <form action="index.php?page=login" method="POST">
-                            <button type="submit" name="logout" class="btn btn-sm btn-outline-secondary">Logout</button>
-                        </form>
+                        <a href="{{ route('logout') }}">
+                            <span type="submit" class="btn btn-sm btn-outline-secondary">Logout</span>
+                        </a>
                     </div>
                 </div>
             </div>
