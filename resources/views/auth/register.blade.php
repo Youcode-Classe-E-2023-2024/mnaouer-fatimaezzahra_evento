@@ -2,27 +2,46 @@
 
 @section('content')
 <main class="form-signin">
-    <form action="index.php?page=register" method="post">
-        <img src="assets/img/wiki.png" style="width: 100px; height: 100px" alt="logo">
+    <form action="{{ route('register.store') }}" method="post">
+        @csrf
+
         <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
         <div class="form-floating">
-            <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+            <input name="email" type="email" class="form-control @error('email') is-invalid @enderror" id="floatingInput" placeholder="name@example.com" required>
             <label for="floatingInput">Email address</label>
+
+            @error('email')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
 
         <div class="form-floating">
-            <input name="first_name" type="text" class="form-control" id="floatingUsername" placeholder="Username" required>
-            <label for="floatingUsername">First name</label>
+            <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="floatingUsername" placeholder="Username" required>
+            <label for="floatingUsername">Name</label>
+
+            @error('name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
 
         <div class="form-floating">
-            <input name="last_name" type="text" class="form-control" id="floatingUsername" placeholder="Username" required>
-            <label for="floatingUsername">Last name</label>
-        </div>
-
-        <div class="form-floating">
-            <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+            <input name="password" type="password" class="form-control @error('password') is-invalid @enderror" id="floatingPassword" placeholder="Password" required>
             <label for="floatingPassword">Password</label>
+
+            @error('password')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+
+        <div class="form-floating">
+            <input name="password_confirmation" type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+            <label for="floatingPassword">Confirm Password</label>
         </div>
 
         <button name="register" class="w-100 btn btn-lg btn-dark" type="submit">Sign up</button>
@@ -31,6 +50,6 @@
 
     </form>
 
-    <p class="mt-5 mb-3 text-muted">&copy; WIKI/2023–2024</p>
+    <p class="mt-5 mb-3 text-muted">&copy; EVENTO - 2024</p>
 </main>
 @endsection
