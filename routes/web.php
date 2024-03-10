@@ -61,6 +61,7 @@ Route::get('/event/edit/{article}', [EventController::class, 'edit'])->name('eve
 Route::post('/event/update', [EventController::class, 'update'])->name('event.update');
 Route::get('/event/{article}', [EventController::class, 'show'])->name('event.show');
 Route::post('/event/status', [EventController::class, 'changeStatus'])->name('event.status');
+Route::post('/event/destroy', [EventController::class, 'destroy'])->name('event.destroy');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 

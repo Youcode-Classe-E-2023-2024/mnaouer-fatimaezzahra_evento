@@ -62,9 +62,10 @@
 
     <dialog id="deleteModal">
         <p>Are you sure ?</p>
-        <form action="index.php?page=article" method="POST">
+        <form action="{{ route('event.destroy') }}" method="POST">
+            @csrf
             <button name="delete" type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
-            <input type="hidden" name="id" value="id">
+            <input type="hidden" name="id" value="{{ $event->id }}">
             <a onclick="deleteModal.close()" class="btn btn-sm btn-secondary">Cancel</a>
         </form>
     </dialog>

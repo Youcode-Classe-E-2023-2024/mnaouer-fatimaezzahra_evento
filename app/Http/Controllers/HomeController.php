@@ -12,6 +12,6 @@ class homeController extends Controller
         $events = Event::with('category')->where('status', 'accepted')->get();
         $cats = Category::all();
 
-        return view('home', compact('events', 'cats'));
+        return view('home', ['events' => $events, 'cats' => $cats]);
     }
 }

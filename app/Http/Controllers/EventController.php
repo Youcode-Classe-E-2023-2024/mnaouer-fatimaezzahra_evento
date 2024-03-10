@@ -6,6 +6,7 @@ use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\UpdateEventRequest;
 use App\Models\Category;
 use App\Models\Event;
+use Illuminate\Database\Console\Migrations\ResetCommand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -104,8 +105,13 @@ class EventController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request->get('id');
+        $event = Event::find($id);
+        $event->status = 'rejected';
+        $event->save();
+
+        return to_route('home');
     }
 }
