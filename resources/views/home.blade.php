@@ -12,12 +12,12 @@
                 <div class="col p-4 d-flex flex-column position-static">
                     <strong class="d-inline-block mb-2 text-primary">category</strong>
                     <h3 class="mb-0">{{ $event->title }}</h3>
-                    <div class="mb-1 text-muted">date</div>
-                    <p class="card-text mb-auto">description</p>
-                    <a href="{{ route('event.show', '1') }}" class="stretched-link">Continue reading</a>
+                    <div class="mb-1 text-muted">{{ $event->started_at }}</div>
+                    <p class="card-text mb-auto text-muted">{{ ucfirst($event->location) }}</p>
+                    <a href="{{ route('event.show', $event->id) }}" class="stretched-link">Details</a>
                 </div>
                 <div class="col-auto d-none d-lg-block">
-                    <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                    <img src="{{ $event->picture }}" alt="cover" class="bd-placeholder-img" width="300" height="250">
                 </div>
                 @endforeach
             </div>
