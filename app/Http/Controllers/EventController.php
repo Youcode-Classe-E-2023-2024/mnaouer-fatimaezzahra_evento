@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreEventRequest;
+use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class EventController extends Controller
 {
@@ -11,7 +15,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $events = Event::all();
     }
 
     /**
@@ -25,9 +29,25 @@ class EventController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreEventRequest $request)
     {
-        //
+        $picture = $request->file('picture');
+
+        $filename = Str::random(20) . '.' . $picture->getClientOriginalExtension();
+        $path = $picture->storeAs('images', $filename, 'public');
+
+        $event = Event::create([
+            'title' => $request['title'],
+            'description' => $request['description'],
+            'price' => $request['price'],
+            'started_at' => $request['started_at'],
+            'location' => $request['location'],
+            'tickets_available' => $request['tickets_available'],
+            'created_by' => Auth::id(),
+            'picture' => '/storage/' . $path,
+        ]);
+
+        return to_route('event.show', $event->id);
     }
 
     /**
@@ -51,7 +71,7 @@ class EventController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        if($request->hasFile('picture')) {}
     }
 
     /**
