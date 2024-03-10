@@ -7,9 +7,9 @@
 
             <h1 class="h3 mb-3 fw-normal">Please enter new password</h1>
 
-            @if(session('statut'))
+            @if(session('status'))
                 <div class="alert alert-success">
-                    {{ session('statut') }}
+                    {{ session('status') }}
                 </div>
             @endif
 
