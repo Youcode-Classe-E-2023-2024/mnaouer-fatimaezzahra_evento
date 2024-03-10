@@ -11,15 +11,6 @@
                     </div>
                 </div>
 
-                <div class="">
-                    <form action="index.php?page=moderation" method="POST">
-                        @if(auth()->user()->id ?? null == $event->created_by)
-                        <a class="btn btn-sm btn-secondary" href="{{ route('event.edit', '1') }}">Edit</a>
-                        <a onclick="deleteModal.showModal();" class="btn btn-sm btn-outline-danger">Delete</a>
-                        @endif
-                    </form>
-                </div>
-
                 <article class="blog-post">
                     <h2 class="blog-post-title">{{ $event->title }}</h2>
                     <p class="blog-post-meta">19/05/2025 by <a href="#">{{ $event->user->name }}</a></p>
@@ -30,6 +21,15 @@
 
             <div class="col-md-4">
                 <div class="position-sticky" style="top: 2rem;">
+                    <div class="pb-3">
+                        <form action="index.php?page=moderation" method="POST">
+                            @if(auth()->user()->id ?? null == $event->created_by)
+                                <a class="btn btn-sm btn-secondary" href="{{ route('event.edit', '1') }}">Edit</a>
+                                <a onclick="deleteModal.showModal();" class="btn btn-sm btn-outline-danger">Delete</a>
+                            @endif
+                        </form>
+                    </div>
+
                     <div class="p-4 bg-light card">
                         <h4 class="fst-italic">Make Reservation</h4>
 
