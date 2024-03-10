@@ -53,6 +53,7 @@ Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::post('/profile/role', [ProfileController::class, 'editRole'])->name('profile.role');
 Route::get('/profile/show/{article}', [ProfileController::class, 'show'])->name('profile.show');
 
+Route::get('/event', [EventController::class, 'index'])->name('event');
 Route::get('/event/create', [EventController::class, 'create'])->name('event.create');
 Route::post ('/event/store', [EventController::class, 'store'])->name('event.store');
 Route::get('/event/edit/{article}', [EventController::class, 'edit'])->name('event.edit');

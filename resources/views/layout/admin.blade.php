@@ -70,7 +70,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{ route('event') }}">
                 <i class="fa-solid fa-icons"></i>
                 <span>Events</span></a>
         </li>
