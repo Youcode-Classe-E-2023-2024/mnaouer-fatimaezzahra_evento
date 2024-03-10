@@ -76,7 +76,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{ route('category') }}">
                 <i class="fa-regular fa-rectangle-list"></i>
                 <span>Categories</span></a>
         </li>

@@ -7,7 +7,7 @@
                 <div class="mb-4 border-bottom">
                     <img src="{{ $event->picture }}" alt="cover" class="rounded img-fluid">
                     <div class="py-2">
-                        <h5><a class="btn btn-outline-primary" href="#">Category</a></h5>
+                        <h5><a class="btn btn-outline-primary" href="#">{{ $event->category->name }}</a></h5>
                     </div>
                 </div>
 

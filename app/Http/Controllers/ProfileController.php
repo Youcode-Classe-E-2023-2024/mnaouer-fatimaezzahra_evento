@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -37,7 +39,8 @@ class ProfileController extends Controller
      */
     public function show(string $id)
     {
-        return view('profile.show');
+        $cats = Category::all();
+        return view('profile.show', ['user' => Auth::user(), 'cats' => $cats]);
     }
 
     /**

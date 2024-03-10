@@ -22,9 +22,11 @@ return new class extends Migration
             $table->integer('tickets_available');
             $table->enum('status', ['pending', 'accepted', 'rejected'])->default('pending');
             $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('category_id');
             $table->timestamps();
 
-            $table->foreign('created_by')->references('id')->on('users');
+            $table->foreign('category_id')->references('id')->on('categories')->cascadeOnDelete();
+            $table->foreign('created_by')->references('id')->on('users')->cascadeOnDelete();
         });
     }
 

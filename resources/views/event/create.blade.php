@@ -21,9 +21,9 @@
                     <div class="form-group mb-2">
                         <label for="inputCategory">Category</label>
                         <select name="category" id="inputCategory" class="form-control" required>
-                            {{--                        foreach--}}
-                            <option value="id">name</option>
-                            {{--                        endforeach--}}
+                            @foreach($cats as $cat)
+                            <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                            @endforeach
                         </select>
                     </div>
 
@@ -119,7 +119,7 @@
                         @enderror
                     </div>
 
-                    <button name="create" type="submit" class="btn btn-secondary mb-2">Submit</button>
+                    <button type="submit" class="btn btn-secondary mb-2">Submit</button>
                 </form>
             </div>
         </div>

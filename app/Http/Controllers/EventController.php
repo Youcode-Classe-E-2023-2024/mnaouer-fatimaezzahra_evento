@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreEventRequest;
+use App\Models\Category;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,7 +26,8 @@ class EventController extends Controller
      */
     public function create()
     {
-        return view('event.create');
+        $cats = Category::all();
+        return view('event.create', compact('cats'));
     }
 
     /**
@@ -45,6 +47,7 @@ class EventController extends Controller
             'started_at' => $request['started_at'],
             'location' => $request['location'],
             'tickets_available' => $request['tickets_available'],
+            'category_id' => $request['category'],
             'created_by' => Auth::id(),
             'picture' => '/storage/' . $path,
         ]);
@@ -57,8 +60,9 @@ class EventController extends Controller
      */
     public function show(string $id)
     {
-        $event = Event::with('user')->find($id);
-        return view('event.details', ['event' => $event]);
+        $event = Event::with(['user', 'category'])->find($id);
+        $cats = Category::all();
+        return view('event.details', ['event' => $event, 'cats' => $cats]);
     }
 
     /**
@@ -66,7 +70,8 @@ class EventController extends Controller
      */
     public function edit(string $id)
     {
-        return view('event.edit');
+        $cats = Category::all();
+        return view('event.edit', ['cats' => $cats]);
     }
 
     public function changeStatus(Request $request)

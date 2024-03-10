@@ -25,6 +25,7 @@ class Event extends Model
         'started_at',
         'created_by',
         'picture',
+        'category_id'
     ];
 
     /**
@@ -33,5 +34,13 @@ class Event extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
+    }
+
+    /**
+     * Get the user that owns the phone.
+     */
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
     }
 }

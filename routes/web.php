@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -62,3 +63,7 @@ Route::post('/event/status', [EventController::class, 'changeStatus'])->name('ev
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+Route::get('/category', [CategoryController::class, 'index'])->name('category');
+Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
+Route::post('/category/update', [CategoryController::class, 'update'])->name('category.update');
+Route::post('/category/destroy', [CategoryController::class, 'destroy'])->name('category.destroy');

@@ -71,7 +71,7 @@
                 <div class="d-none d-md-flex d-lg-flex d-xl-flex d-xxl-flex justify-content-center align-items-center">
                     <div class="form">
                         <i class="fa fa-search"></i>
-                        <input name="search" id="search-bar" type="text" class="form-control form-input" placeholder="Search...">
+                        <input name="search" id="search-bar" type="text" class="form-control form-input" aria-label="search-bar" placeholder="Search...">
                     </div>
                 </div>
             </div>
@@ -95,26 +95,12 @@
 
     <div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-between">
-            <a class="p-2 link-secondary" href="#">category</a>
+            @foreach($cats as $cat)
+                <a class="p-2 link-secondary" href="#">{{ $cat->name }}</a>
+            @endforeach
         </nav>
     </div>
 </div>
-
-{{--@guest--}}
-{{--    @if (Route::has('login'))--}}
-{{--        <li class="nav-item">--}}
-{{--            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>--}}
-{{--        </li>--}}
-{{--    @endif--}}
-
-{{--    @if (Route::has('register'))--}}
-{{--        <li class="nav-item">--}}
-{{--            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>--}}
-{{--        </li>--}}
-{{--        @endif--}}
-{{--        @else--}}
-
-{{--        @endguest--}}
 
 <main class="py-4">
     @yield('content')
