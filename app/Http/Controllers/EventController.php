@@ -57,7 +57,8 @@ class EventController extends Controller
      */
     public function show(string $id)
     {
-        return view('event.details');
+        $event = Event::with('user')->find($id);
+        return view('event.details', ['event' => $event]);
     }
 
     /**

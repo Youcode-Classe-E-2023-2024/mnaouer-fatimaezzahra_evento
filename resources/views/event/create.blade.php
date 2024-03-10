@@ -29,7 +29,7 @@
 
                     <div class="form-group mb-2">
                         <label for="title">Title</label>
-                        <input name="title" class="form-control @error('title') is-invalid @enderror" id="title"
+                        <input name="title" class="form-control @error('title') is-invalid @enderror" id="title" placeholder="Title event"
                                required>
 
                         @error('title')
@@ -41,7 +41,7 @@
 
                     <div class="form-group mb-2">
                         <label for="desc">Description</label>
-                        <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="desc" required></textarea>
+                        <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="desc" placeholder="Description event" required></textarea>
 
                         @error('description')
                             <span class="invalid-feedback" role="alert">
@@ -50,10 +50,12 @@
                         @enderror
                     </div>
 
-                    <div class="form-group mb-2">
-                        <label for="price">Price</label>
-                        <input type="number" name="price" class="form-control @error('price') is-invalid @enderror"
-                               id="price" required/>
+                    <label for="price">Price</label>
+                    <div class="input-group mb-3">
+                        <input type="number" id="price" name="price" class="form-control @error('price') is-invalid @enderror" placeholder="Price event" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="basic-addon2">Dh</span>
+                        </div>
 
                         @error('price')
                             <span class="invalid-feedback" role="alert">
@@ -95,7 +97,7 @@
 
                     <div class="form-group mb-2">
                         <label for="available">Ticket Available</label>
-                        <input type="number" name="tickets_available"
+                        <input type="number" name="tickets_available" placeholder="Number of tickets available"
                                class="form-control @error('tickets_available') is-invalid @enderror" id="available"
                                required/>
 

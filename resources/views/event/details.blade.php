@@ -4,50 +4,51 @@
     <main class="container pt-4">
         <div class="row g-5">
             <div class="col-md-8">
-                <h3 class="pb-4 mb-4 fst-italic border-bottom">
-                    Name
-                </h3>
+                <div class="mb-4 border-bottom">
+                    <img src="{{ $event->picture }}" alt="cover" class="rounded img-fluid">
+                    <div class="py-2">
+                        <h5><a class="btn btn-outline-primary" href="#">Category</a></h5>
+                    </div>
+                </div>
+
+                <div class="">
+                    <form action="index.php?page=moderation" method="POST">
+                        @if(auth()->user()->id ?? null == $event->created_by)
+                        <a class="btn btn-sm btn-secondary" href="{{ route('event.edit', '1') }}">Edit</a>
+                        <a onclick="deleteModal.showModal();" class="btn btn-sm btn-outline-danger">Delete</a>
+                        @endif
+                    </form>
+                </div>
 
                 <article class="blog-post">
-                    <h2 class="blog-post-title">Titre</h2>
-                    <p class="blog-post-meta">19/05/2025 by <a href="#">Full Name</a></p>
+                    <h2 class="blog-post-title">{{ $event->title }}</h2>
+                    <p class="blog-post-meta">19/05/2025 by <a href="#">{{ $event->user->name }}</a></p>
 
-                    <p><?= nl2br('Content') ?></p>
+                    <p>{{ nl2br($event->description) }}</p>
                 </article>
             </div>
 
             <div class="col-md-4">
                 <div class="position-sticky" style="top: 2rem;">
-                    <div class="p-4">
-                        <form action="index.php?page=moderation" method="POST">
-    {{--                        if admin--}}
-                            <button name="archive" class="btn btn-sm btn-outline-dark">Archive</button>
-                            <input name="id" type="hidden" value="id">
-    {{--                        end if--}}
+                    <div class="p-4 bg-light card">
+                        <h4 class="fst-italic">Make Reservation</h4>
 
-    {{--                        if owner--}}
-                            <a class="btn btn-sm btn-secondary" href="{{ route('event.edit', '1') }}">Edit</a>
-                            <a onclick="deleteModal.showModal();" class="btn btn-sm btn-outline-danger">Delete</a>
-    {{--                        end if--}}
+                        <form action="" method="POST">
+                            <label for="price">Price</label>
+                            <div class="input-group mb-2">
+                                <input type="number" id="price" name="price" class="form-control" placeholder="Recipient's username" value="{{ $event->price }}" aria-describedby="basic-addon2" disabled />
+                                <div class="input-group-append">
+                                    <span class="input-group-text" id="basic-addon2">Dh</span>
+                                </div>
+                            </div>
+
+                            <label for="available">Place Available</label>
+                            <div class="form-group mb-2">
+                                <input class="form-control" id="available" type="number" value="{{ $event->tickets_available }}" disabled>
+                            </div>
+
+                            <button name="login" class="btn btn-lg btn-secondary" type="submit">Reserve</button>
                         </form>
-                    </div>
-
-                    <div class="p-4 bg-light rounded">
-                        <h4 class="fst-italic">Tags</h4>
-                        <nav aria-label="Pagination">
-    {{--                        foreach--}}
-                            <a class="btn btn-outline-primary mb-2" href="#">tag</a>
-    {{--                        endforeach--}}
-                        </nav>
-                    </div>
-
-                    <div class="p-4">
-                        <h4 class="fst-italic">Last Event</h4>
-                        <ol class="list-unstyled mb-0">
-    {{--                        foreach--}}
-                            <li><a href="index.php?page=article&id=id">Titre</a></li>
-    {{--                        endforeach--}}
-                        </ol>
                     </div>
                 </div>
             </div>
