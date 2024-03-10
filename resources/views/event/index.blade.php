@@ -36,7 +36,7 @@
                 </div>
             </td>
             <td>
-                <p class="fw-normal">{{ $event->description }}</p>
+                <p class="fw-normal">{{ \Illuminate\Support\Str::limit($event->description, 150, $end='...') }}</p>
             </td>
             <form action="{{ route('event.status') }}" method="POST">
                 @csrf

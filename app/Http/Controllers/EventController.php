@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreEventRequest;
+use App\Http\Requests\UpdateEventRequest;
 use App\Models\Category;
 use App\Models\Event;
 use Illuminate\Http\Request;
@@ -70,8 +71,9 @@ class EventController extends Controller
      */
     public function edit(string $id)
     {
+        $event = Event::with('category')->find($id);
         $cats = Category::all();
-        return view('event.edit', ['cats' => $cats]);
+        return view('event.edit', ['cats' => $cats, 'event' => $event]);
     }
 
     public function changeStatus(Request $request)
@@ -88,9 +90,15 @@ class EventController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateEventRequest $request)
     {
-        if($request->hasFile('picture')) {}
+        $validated = $request->validated();
+
+        $id = $request->get('id');
+        $event = Event::find($id);
+
+        $event->update($validated);
+        return to_route('event.show', $event->id);
     }
 
     /**

@@ -13,9 +13,9 @@
 
                 <article class="blog-post">
                     <h2 class="blog-post-title">{{ $event->title }}</h2>
-                    <p class="blog-post-meta">19/05/2025 by <a href="#">{{ $event->user->name }}</a></p>
+                    <p class="blog-post-meta">{{ $event->created_at }} by <a href="#">{{ $event->user->name }}</a></p>
 
-                    <p>{{ nl2br($event->description) }}</p>
+                    <p>{!! nl2br($event->description) !!}</p>
                 </article>
             </div>
 
@@ -24,7 +24,7 @@
                     <div class="pb-3">
                         <form action="index.php?page=moderation" method="POST">
                             @if(auth()->user()->id ?? null == $event->created_by)
-                                <a class="btn btn-sm btn-secondary" href="{{ route('event.edit', '1') }}">Edit</a>
+                                <a class="btn btn-sm btn-secondary" href="{{ route('event.edit', $event->id) }}">Edit</a>
                                 <a onclick="deleteModal.showModal();" class="btn btn-sm btn-outline-danger">Delete</a>
                             @endif
                         </form>
@@ -34,6 +34,11 @@
                         <h4 class="fst-italic">Make Reservation</h4>
 
                         <form action="" method="POST">
+                            <label for="date">Start at</label>
+                            <div class="input-group mb-2">
+                                <input type="date" id="date" name="date" class="form-control" value="{{ $event->started_at }}" disabled />
+                            </div>
+
                             <label for="price">Price</label>
                             <div class="input-group mb-2">
                                 <input type="number" id="price" name="price" class="form-control" placeholder="Recipient's username" value="{{ $event->price }}" aria-describedby="basic-addon2" disabled />
