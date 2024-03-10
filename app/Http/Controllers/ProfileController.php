@@ -55,7 +55,7 @@ class ProfileController extends Controller
         $user->removeRole($user->getRoleNames()[0]);
         $user->assignRole($request->role);
 
-        return back();
+        return back()->with(['status' => 'Role changed successfully.']);
     }
 
     /**

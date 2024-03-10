@@ -9,6 +9,12 @@
         <h1 class="h3 mb-0 text-gray-800">Events</h1>
     </div>
 
+    @if(session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
+
     <table class="table align-middle mb-0 bg-white">
         <thead class="bg-light">
         <tr>

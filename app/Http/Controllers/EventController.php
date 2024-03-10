@@ -77,7 +77,7 @@ class EventController extends Controller
         $event->status = $new_status;
         $event->save();
 
-        return back();
+        return back()->with(['status' => 'Event status changed successfully.']);
     }
 
     /**
