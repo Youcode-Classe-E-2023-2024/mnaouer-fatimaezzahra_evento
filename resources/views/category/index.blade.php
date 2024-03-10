@@ -10,7 +10,7 @@
 
         <form action="{{ route('category.store') }}" method="POST" class="d-flex">
             @csrf
-            <input name="name" type="text" class="form-control" aria-label="category-new" placeholder="Enter new category name">
+            <input name="name" type="text" class="form-control mr-2" aria-label="category-new" placeholder="Enter new category name">
             <button type="submit" class="btn btn-sm btn-primary shadow-sm">Create</button>
         </form>
 
@@ -19,6 +19,16 @@
     @if(session('status'))
         <div class="alert alert-success">
             {{ session('status') }}
+        </div>
+    @endif
+
+    @if($errors->count())
+        <div class="col-md-12">
+            <div class="alert alert-danger text-center">
+                @foreach ($errors->all() as $error)
+                    <p>{{$error}}</p>
+                @endforeach
+            </div>
         </div>
     @endif
 
