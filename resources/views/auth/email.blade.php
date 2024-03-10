@@ -13,6 +13,16 @@
                 </div>
             @endif
 
+            @if($errors->count())
+                <div class="col-md-12">
+                    <div class="alert alert-danger text-center">
+                        @foreach ($errors->all() as $error)
+                            <p>{{$error}}</p>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+
             <div class="form-floating">
                 <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
                        id="floatingInput" placeholder="name@example.com" required>

@@ -13,6 +13,16 @@
                 </div>
             @endif
 
+            @if($errors->count())
+                <div class="col-md-12">
+                    <div class="alert alert-danger text-center">
+                        @foreach ($errors->all() as $error)
+                            <p>{{$error}}</p>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+
             <input type="hidden" name="token" value="{{ $token }}">
             <input type="hidden" name="email" value="{{ $email }}">
 
@@ -33,7 +43,7 @@
                 <label for="floatingPassword">Confirm Password</label>
             </div>
 
-            <button name="login" class="w-100 btn btn-lg btn-secondary" type="submit">Send Email</button>
+            <button name="login" class="w-100 btn btn-lg btn-secondary" type="submit">Reset</button>
             <a href="{{ route('home') }}" class="w-100 btn btn-lg btn-outline-dark mt-2" type="button">Back</a>
             <p class="mt-5 mb-3 text-muted">&copy; EVENTO - 2024</p>
         </form>
