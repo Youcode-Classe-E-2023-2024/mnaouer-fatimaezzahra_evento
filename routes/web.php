@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\EventController;
@@ -41,6 +42,12 @@ Route::get('/login', [LoginController::class, 'create'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 
 Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
+
+Route::get('/forgot-password', [ForgotPasswordController::class, 'create'])->name('password.create');
+Route::post('/forgot-password', [ForgotPasswordController::class, 'store'])->name('password.store');
+Route::get('/forgot-password/{token}', [ForgotPasswordController::class, 'edit'])->name('password.reset');
+Route::post('/forgot-password/reset', [ForgotPasswordController::class, 'update'])->name('password.update');
+
 
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::post('/profile/role', [ProfileController::class, 'editRole'])->name('profile.role');
