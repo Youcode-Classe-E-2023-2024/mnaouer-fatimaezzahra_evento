@@ -32,15 +32,15 @@
             <td>
                 <p class="fw-normal">{{ $event->description }}</p>
             </td>
-            <form action="{{ route('profile.role') }}" method="POST">
+            <form action="{{ route('event.status') }}" method="POST">
                 @csrf
 
                 <input type="hidden" name="id" value="{{ $event->id }}">
                 <td>
-                    <select id="role" name="role" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                        <option value="user" @if($event->status == 'pending') selected @endif>Pending</option>
-                        <option value="organizer" @if($event->status == 'accepted') selected @endif>Accepted</option>
-                        <option value="admin" @if($event->status == 'rejected') selected @endif>Rejected</option>
+                    <select id="status" name="status" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        <option value="pending" @if($event->status == 'pending') selected @endif>Pending</option>
+                        <option value="accepted" @if($event->status == 'accepted') selected @endif>Accepted</option>
+                        <option value="rejected" @if($event->status == 'rejected') selected @endif>Rejected</option>
                     </select>
                 </td>
 

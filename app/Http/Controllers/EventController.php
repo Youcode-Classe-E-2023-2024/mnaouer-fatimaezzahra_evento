@@ -69,6 +69,17 @@ class EventController extends Controller
         return view('event.edit');
     }
 
+    public function changeStatus(Request $request)
+    {
+        $id = $request->id;
+        $new_status = $request->status;
+        $event = Event::find($id);
+        $event->status = $new_status;
+        $event->save();
+
+        return back();
+    }
+
     /**
      * Update the specified resource in storage.
      */
