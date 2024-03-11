@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class homeController extends Controller
 {
     public function index(){
-        $events = Event::with('category')->where('status', 'accepted')->get();
+        $events = Event::paginate(6);
         $cats = Category::all();
 
         return view('home', ['events' => $events, 'cats' => $cats]);
