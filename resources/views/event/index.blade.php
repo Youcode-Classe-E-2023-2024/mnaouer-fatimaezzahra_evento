@@ -58,7 +58,11 @@
         </tr>
         @endforeach
         </tbody>
+
     </table>
+    <div class="mt-3">
+    {{ $events->links() }}
+    </div>
 @endsection
 
 @push('js')
