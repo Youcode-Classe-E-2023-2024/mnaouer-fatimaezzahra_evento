@@ -12,7 +12,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $cats = Category::withCount('events')->get();
+        $cats = Category::paginate(6);
         return view('category.index', ['cats' => $cats]);
     }
 

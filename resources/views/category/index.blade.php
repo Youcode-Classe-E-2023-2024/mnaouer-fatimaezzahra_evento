@@ -6,7 +6,7 @@
 @section('content')
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Users</h1>
+        <h1 class="h3 mb-0 text-gray-800">Category</h1>
 
         <form action="{{ route('category.store') }}" method="POST" class="d-flex">
             @csrf
@@ -77,6 +77,9 @@
         </tbody>
     </table>
 
+    <div class="mt-3">
+    {{ $cats->links() }}
+    </div>
 
 @endsection
 
