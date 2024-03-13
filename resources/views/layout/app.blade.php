@@ -83,7 +83,9 @@
                 @endrole
 
                 @auth()
+                    @role('organizer|admin')
                     <a class="btn btn-sm btn-dark ms-2" href="{{ route('event.create') }}">Create Event</a>
+                    @endrole
                     <a class="btn btn-sm btn-outline-secondary ms-2" href="{{ route('profile.show', 1) }}">Profile</a>
                 @endauth
 
