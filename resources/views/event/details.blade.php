@@ -23,10 +23,12 @@
                 <div class="position-sticky" style="top: 2rem;">
                     <div class="pb-3">
                         <form action="index.php?page=moderation" method="POST">
-                            @if(auth()->user()->id ?? null == $event->created_by)
+                            @auth
+                            @if(auth()->user()->id == $event->created_by)
                                 <a class="btn btn-sm btn-secondary" href="{{ route('event.edit', $event->id) }}">Edit</a>
                                 <a onclick="deleteModal.showModal();" class="btn btn-sm btn-outline-danger">Delete</a>
                             @endif
+                            @endauth
                         </form>
                     </div>
 
