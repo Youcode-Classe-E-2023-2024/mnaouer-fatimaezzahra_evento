@@ -22,6 +22,7 @@ class Event extends Model
         'date',
         'location',
         'tickets_available',
+        'reservation_count',
         'started_at',
         'created_by',
         'picture',

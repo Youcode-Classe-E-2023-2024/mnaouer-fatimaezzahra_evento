@@ -22,20 +22,19 @@
             <div class="col-md-4">
                 <div class="position-sticky" style="top: 2rem;">
                     <div class="pb-3">
-                        <form action="index.php?page=moderation" method="POST">
-                            @auth
-                            @if(auth()->user()->id == $event->created_by)
-                                <a class="btn btn-sm btn-secondary" href="{{ route('event.edit', $event->id) }}">Edit</a>
-                                <a onclick="deleteModal.showModal();" class="btn btn-sm btn-outline-danger">Delete</a>
-                            @endif
-                            @endauth
-                        </form>
+                        @auth
+                        @if(auth()->user()->id == $event->created_by)
+                            <a class="btn btn-sm btn-secondary" href="{{ route('event.edit', $event->id) }}">Edit</a>
+                            <a onclick="deleteModal.showModal();" class="btn btn-sm btn-outline-danger">Delete</a>
+                        @endif
+                        @endauth
                     </div>
 
                     <div class="p-4 bg-light card">
                         <h4 class="fst-italic">Make Reservation</h4>
 
-                        <form action="" method="POST">
+                        <form action="{{ route('event.reservation') }}" method="POST">
+                            @csrf
                             <label for="date">Start at</label>
                             <div class="input-group mb-2">
                                 <input type="date" id="date" name="date" class="form-control" value="{{ $event->started_at }}" disabled />
@@ -54,7 +53,12 @@
                                 <input class="form-control" id="available" type="number" value="{{ $event->tickets_available }}" disabled>
                             </div>
 
-                            <button name="login" class="btn btn-lg btn-secondary" type="submit">Reserve</button>
+                            @if($event->tickets_available > 0)
+                                <input type="hidden" name="id" value="{{ $event->id }}">
+                                <button class="btn btn-lg btn-secondary" type="submit">Reserve</button>
+                            @else
+                                <button class="btn btn-lg btn-secondary" disabled>Sold Out</button>
+                            @endif
                         </form>
                     </div>
                 </div>

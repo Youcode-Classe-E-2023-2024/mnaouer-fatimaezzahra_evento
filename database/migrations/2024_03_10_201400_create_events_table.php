@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('picture');
             $table->string('location');
             $table->integer('tickets_available');
+            $table->integer('reservation_count');
             $table->enum('status', ['pending', 'accepted', 'rejected'])->default('pending');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('category_id');

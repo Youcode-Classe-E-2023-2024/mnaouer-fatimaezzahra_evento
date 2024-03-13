@@ -40,6 +40,7 @@ Route::middleware(['role:admin|organizer|user'])->group(function () {
 
     Route::get('/profile/show/{article}', [ProfileController::class, 'show'])->name('profile.show');
 
+    Route::post('/event/reservation', [EventController::class, 'makeReservation'])->name('event.reservation');
 });
 
 Route::middleware(['role:admin|organizer'])->group(function () {

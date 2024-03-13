@@ -10,6 +10,7 @@ use Illuminate\Database\Console\Migrations\ResetCommand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class EventController extends Controller
 {
@@ -56,6 +57,17 @@ class EventController extends Controller
     {
         $cats = Category::all();
         return view('event.create', compact('cats'));
+    }
+
+    public function makeReservation(Request $request)
+    {
+        $id = $request->get('id');
+        $event = Event::find($id);
+        $event->decrement('tickets_available');
+        $event->increment('reservation_count');
+        $pdf = Pdf::loadView('pdf.reservation', ['event' => $event, 'user' => Auth::user()]);
+
+        return $pdf->download();
     }
 
     /**
