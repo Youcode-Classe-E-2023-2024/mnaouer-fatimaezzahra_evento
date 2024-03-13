@@ -6,7 +6,7 @@
             @csrf
 
             <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
+{{--pour afficher les msgs d'acces et d'erreur--}}
             @if(session('status'))
                 <div class="alert alert-success">
                     {{ session('status') }}
@@ -46,7 +46,9 @@
                 </span>
                 @enderror
             </div>
-
+{{--{{ old('remember') ? 'checked' : '' }} : C'est une syntaxe Blade de Laravel.
+Cela vérifie s'il y a une valeur précédemment soumise pour cette case à cocher (via old('remember')).
+Si c'est le cas, la case à cocher sera cochée (checked), sinon, elle restera décochée.--}}
             <div class="row mb-3">
                 <div class="col-6">
                     <div class="form-check">

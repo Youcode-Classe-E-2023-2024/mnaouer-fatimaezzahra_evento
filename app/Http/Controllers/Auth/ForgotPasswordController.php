@@ -29,6 +29,11 @@ class ForgotPasswordController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
+//appelle la méthode sendResetLink de la classe Password, qui fournissent des fonctionnalités de la gestion des mots
+// de passe. La méthode sendResetLink est utilisée pour envoyer un lien de réinitialisation de mot de passe à
+// l'utilisateur dont l'adresse e-mail est spécifiée dans la requête $request.
+
     public function store(Request $request)
     {
         $request->validate([
@@ -38,6 +43,8 @@ class ForgotPasswordController extends Controller
         $status = Password::sendResetLink(
             $request->only('email')
         );
+// retourn la reponse en fonction de $status si le lien est envoyé va retourné au page precedent
+// sinon va retourne la page precedent avec erreur
 
         return $status === Password::RESET_LINK_SENT
             ? back()->with('status', __($status))
@@ -71,10 +78,13 @@ class ForgotPasswordController extends Controller
             'email' => 'required|email',
             'password' => 'required|string|confirmed|min:8',
         ]);
-
+//fonction de rappel (callback) $user qui représente l'utilisateur dont le mot de passe est réinitialisé
+        //$request pour accéder aux données de la demande HTTP
         $status = Password::reset(
             $request->only('email', 'password', 'password_confirmation', 'token'),
             function ($user) use ($request) {
+                //réinitialisation de mot de passe pour un utilisateur spécifique en utilisant les données fournies dans la demande HTTP,
+                // puis sauvegarde les modifications apportées à l'utilisateur dans la base de données.
                 $user->forceFill([
                     'password' => Hash::make($request->password),
                     'remember_token' => Str::random(60)

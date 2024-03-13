@@ -64,7 +64,7 @@ class EventController extends Controller
     public function store(StoreEventRequest $request)
     {
         $picture = $request->file('picture');
-
+//getClientOriginalExtension() génère un nom de fichier aléatoire pour éviter les conflits de noms de fichiers pour que le nom de fichier soit unique
         $filename = Str::random(20) . '.' . $picture->getClientOriginalExtension();
         $path = $picture->storeAs('images', $filename, 'public');
 //storeAs() pour déplacer le fichier vers le répertoire 'public/storage/images'
@@ -104,7 +104,7 @@ class EventController extends Controller
         $cats = Category::all();
         return view('event.edit', ['cats' => $cats, 'event' => $event]);
     }
-
+//Cette partie??
     public function changeStatus(Request $request)
     {
         $id = $request->id;
