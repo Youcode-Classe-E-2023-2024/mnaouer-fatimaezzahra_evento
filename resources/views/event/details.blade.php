@@ -53,11 +53,13 @@
                                 <input class="form-control" id="available" type="number" value="{{ $event->tickets_available }}" disabled>
                             </div>
 
-                            @if($event->tickets_available > 0)
+                            @if($event->tickets_available > 0 && auth()->check())
                                 <input type="hidden" name="id" value="{{ $event->id }}">
                                 <button class="btn btn-lg btn-secondary" type="submit">Reserve</button>
-                            @else
+                            @elseif(auth()->check())
                                 <button class="btn btn-lg btn-secondary" disabled>Sold Out</button>
+                            @else
+                                <a class="btn btn-lg btn-outline-secondary" href="{{ route('login') }}">Sign in</a>
                             @endif
                         </form>
                     </div>
