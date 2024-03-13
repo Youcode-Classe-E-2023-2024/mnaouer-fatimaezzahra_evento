@@ -69,10 +69,11 @@
 
             <div class="col-4 text-center">
                 <div class="d-none d-md-flex d-lg-flex d-xl-flex d-xxl-flex justify-content-center align-items-center">
-                    <div class="form">
+                    <form class="form" action="{{ route('title.search') }}" method="POST">
+                        @csrf
                         <i class="fa fa-search"></i>
                         <input name="search" id="search-bar" type="text" class="form-control form-input" aria-label="search-bar" placeholder="Search...">
-                    </div>
+                    </form>
                 </div>
             </div>
 
@@ -96,7 +97,7 @@
     <div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-between">
             @foreach($cats as $cat)
-                <a class="p-2 link-secondary" href="#">{{ $cat->name }}</a>
+                <a class="p-2 link-secondary" href="{{ route('category.search', $cat->name) }}">{{ $cat->name }}</a>
             @endforeach
         </nav>
     </div>

@@ -25,6 +25,31 @@ class EventController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     */
+    public function byCatName(string $keyWords)
+    {
+        $cats = Category::all();
+        $category = Category::where('name', $keyWords)->first();
+
+        $events = $category->events()->paginate(4);
+
+        return view('category', ['events' => $events, 'cats' => $cats]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function byTitle(Request $request)
+    {
+        $keyWords = $request->get('search');
+        $events = Event::where('title', 'LIKE','%'.$keyWords.'%')->paginate(4);
+        $cats = Category::all();
+
+        return view('title', ['events' => $events, 'cats' => $cats]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
@@ -42,6 +67,8 @@ class EventController extends Controller
 
         $filename = Str::random(20) . '.' . $picture->getClientOriginalExtension();
         $path = $picture->storeAs('images', $filename, 'public');
+//storeAs() pour déplacer le fichier vers le répertoire 'public/storage/images'
+//en utilisant le nom de fichier généré précédemment et "Public" spécifie le lecteur de stockage à utiliser
 
         $event = Event::create([
             'title' => $request['title'],
